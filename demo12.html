@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .container{
+            margin: 100px auto;
+            width: 600px;
+            height: 300px;
+            overflow: hidden;
+        }
+        .top{
+            width: 100%;
+            height: 30px;
+        }
+        .button{
+            width: 120px;
+            height: 30px;
+            background: #9e7a0c;
+            float: left;
+            text-align: center;
+            line-height: 30px;
+        }
+        .bottom{
+            width: 500%;
+            height: 270px;
+            /*position: relative;*/
+            transition: all 2s linear;
+        }
+        .banner{
+            float: left;
+            width: 600px;
+            height: 270px;
+            background: #126909;
+            text-align: center;
+            line-height: 270px;
+            transition: all 2s linear;
+        }
+        .top .active{
+            background: #0800ff;
+            text-decoration: underline;
+        }
+        .bottom .active2{
+            z-index: 10;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="top">
+        <div class="button active">A</div>
+        <div class="button">B</div>
+        <div class="button">C</div>
+        <div class="button">D</div>
+        <div class="button">E</div></div>
+        <div class="bottom">
+        <div class="banner active2">AAA</div>
+        <div class="banner">BBB</div>
+        <div class="banner">CCC</div>
+        <div class="banner">DDD</div>
+        <div class="banner">EEE</div></div>
+    </div>
+    <script>
+        let buttons=document.querySelectorAll(".button");
+        let banners=document.querySelectorAll(".banner");
+        let bottom=document.querySelector(".bottom");
+        let container=document.querySelector(".container");
+        for(let i=0;i<buttons.length;i++){
+            buttons[i].onclick=function () {
+                for(let j=0;j<buttons.length;j++){
+                    buttons[j].classList.remove("active");
+                    banners[j].classList.remove("active2");
+                }
+                buttons[i].classList.add("active");
+                // banners[i].classList.add("active2");.\
+                bottom.style.marginLeft=(-i*600+"px");
+                banners[i].style.transform="rotateZ(360deg)";
+                i=n;
+            }
+        }
+        let t;
+        let n=0;
+        t=setInterval(move,3000);
+        function move() {
+            if (n===banners.length){
+                n=0;
+            }
+                for (let j = 0; j < buttons.length; j++) {
+                    buttons[j].classList.remove("active");
+                    banners[j].classList.remove("active2");
+                }
+                bottom.style.marginLeft = (-n * 600 + "px");
+                n++;
+        }
+        container.onmouseenter=function () {
+            clearInterval(t);
+        };
+        container.onmouseleave=function () {
+            t=setInterval(move,3000);
+        }
+    </script>
+</body>
+</html>

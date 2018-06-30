@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        .box{
+            margin: 0 auto;
+            width: 100px;
+            height: 100px;
+            position: relative;
+            overflow: hidden;
+        }
+        .point{
+            width: 1px;
+            height: 1px;
+            position: absolute;
+            transform-style: preserve-3d;
+            /*transform: translateX() translateY();*/
+        }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+<div class="box">
+    <div class="point"></div>
+</div>
+<script>
+    let number=10;
+    function fn(number) {
+        console.log(number++);
+    }
+    fn(number++);
+    console.log(number);
+
+    // let number=10;
+    // function fn(foo) {
+    //     console.log(foo);
+    // }
+    // fn(foo=number++);
+    // console.log(number);
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background: #1c1011;
+        }
+        .road{
+            margin: 15% auto;
+            width: 30%;
+            height: 400px;
+            border: 2px solid #ff00cb;
+            position: relative;
+            overflow: hidden;
+        }
+        .car{
+            position: absolute;
+            bottom: 3%;
+            height: 50px;
+            width: 90px;
+            background: #00f0ff;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var oBox = document.getElementById("box");
+            var oroad = document.getElementById("road");
+            var bLeft = bTop = bRight = bBottom = bCtrlKey = false;
+            setInterval(function () {
+                if (bLeft) {
+                    oBox.style.left = oBox.offsetLeft - 10 + "px"
+                }
+                else if (bRight) {
+                    oBox.style.left = oBox.offsetLeft + 10 + "px"
+                }
+                if (bTop) {
+                    oBox.style.top = oBox.offsetTop - 10 + "px"
+                }
+                else if (bBottom) {
+                    oBox.style.top = oBox.offsetTop + 10 + "px"
+                }
+//防止溢出
+                limit();
+            }, 30);
+            document.onkeydown = function (event) {
+                var event = event || window.event;
+                bCtrlKey = event.ctrlKey;
+                switch (event.keyCode) {
+                    case 37:
+                        bLeft = true;
+                        break;
+                    case 38:
+                        if (bCtrlKey) {
+                            var oldWidth = oBox.offsetWidth;
+                            var oldHeight = oBox.offsetHeight;
+                            oBox.style.width = oBox.offsetWidth * 1.5 + "px";
+                            oBox.style.height = oBox.offsetHeight * 1.5 + "px";
+                            oBox.style.left = oBox.offsetLeft - (oBox.offsetWidth - oldWidth) / 2 + "px";
+                            oBox.style.top = oBox.offsetTop - (oBox.offsetHeight - oldHeight) / 2 + "px";
+                            break;
+                        }
+                        bTop = true;
+                        break;
+                    case 39:
+                        bRight = true;
+                        break;
+                    case 40:
+                        if (bCtrlKey) {
+                            var oldWidth = oBox.offsetWidth;
+                            var oldHeight = oBox.offsetHeight;
+                            oBox.style.width = oBox.offsetWidth * 0.75 + "px";
+                            oBox.style.height = oBox.offsetHeight * 0.75 + "px";
+                            oBox.style.left = oBox.offsetLeft - (oBox.offsetWidth - oldWidth) / 2 + "px";
+                            oBox.style.top = oBox.offsetTop - (oBox.offsetHeight - oldHeight) / 2 + "px";
+                            break;
+                        }
+                        bBottom = true;
+                        break;
+                    case 49:
+                        bCtrlKey && (oBox.style.background = "green");
+                        break;
+                    case 50:
+                        bCtrlKey && (oBox.style.background = "yellow");
+                        break;
+                    case 51:
+                        bCtrlKey && (oBox.style.background = "blue");
+                        break;
+                }
+                return false
+            };
+            document.onkeyup = function (event) {
+                switch ((event || window.event).keyCode) {
+                    case 37:
+                        bLeft = false;
+                        break;
+                    case 38:
+                        bTop = false;
+                        break;
+                    case 39:
+                        bRight = false;
+                        break;
+                    case 40:
+                        bBottom = false;
+                        break;
+                }
+            };
+        }
+    </script>
+    <title>Document</title>
+</head>
+<body>
+<div class="road">
+    <div class="car" id="box"></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body{
+            height: 100%;
+            width: 100%;
+            background: #000;
+            background-image: -webkit-linear-gradient(left, rgba(255, 255, 255, 0.025) 50%, transparent 50%);
+            background-image: linear-gradient(to right, rgba(255, 255, 255, 0.025) 50%, transparent 50%);
+            background-size: 20px 100%;
+            color: #fff;
+        }
+        .center{
+            margin: 100px auto;
+            width: 500px;
+            height: 500px;
+            /*border: 2px solid #00f0ff;*/
+            transform-style: preserve-3d;
+            animation: rotate 12s infinite linear;
+        }
+
+        @keyframes rotate {
+            100% {
+                -webkit-transform: rotateX(360deg) rotateZ(360deg);
+                transform: rotateX(360deg) rotateZ(360deg);
+            }
+        }
+        .demo {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            -webkit-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+
+        }
+        .demo--2 {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            -webkit-transform: rotateX(45deg) rotateY(45deg);
+            transform: rotateX(45deg) rotateY(45deg);
+        }
+        .demo--3 {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            transform-style: preserve-3d;
+            -webkit-transform: rotateX(45deg) rotateZ(45deg);
+            transform: rotateX(45deg) rotateZ(45deg);
+        }
+        .side{
+            position: absolute;
+            margin: 200px 200px;
+            width: 100px;
+            height: 100px;
+            /*background: rgba(233, 138, 0, 0.4);*/
+            border: 1px dotted rgba(233, 94, 8, 0.91);
+            border-radius: 50%;
+            transform-style: preserve-3d;
+            transform: rotateY(180deg);
+        }
+        .side::before , .side::after{
+            content: "";
+            border-radius: 50%;
+            display: block;
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            top: 0;
+            margin: auto;
+        }
+        .side::before{
+            width: 90px;
+            height: 90px;
+            background: rgba(233, 44, 0, 0.6);
+            color: #f5ff09;
+            border: 1px dotted rgb(247, 255, 8);
+            box-shadow: inset 0 0 4px, 0 0 4px;
+            transform: translateZ(-10px);
+        }
+        .side:after{
+            width: 30px;
+            height: 30px;
+            color: #00f0ff;
+            background: rgba(0, 240, 255, 0.1);
+            border: 1px dotted rgba(0, 240, 255, 0.91);
+            box-shadow: inset 0 0 2px, 0 0 2px;
+            transform: translateZ(-90px);
+        }
+        .inner{
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            background: rgba(233, 0, 205, 0.3);
+            border: 1px dotted rgba(233, 0, 205, 0.91);
+            border-radius: 50%;
+            transform-style: preserve-3d;
+            transform:  translateZ(20px);
+        }
+        .inner:before , .inner:after {
+            content: "";
+            border-radius: 50%;
+            display: block;
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            top: 0;
+            margin: auto;
+        }
+        .inner::before{
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 213, 0, 0.3);
+            color: #ffd500;
+            border: 1px dotted rgb(255, 213, 0);
+            box-shadow: inset 0 0 4px, 0 0 4px;
+            transform: translateZ(40px);
+        }
+        .inner:after{
+            width: 20px;
+            height: 20px;
+            color: #ff0300;
+            background: rgba(255, 3, 0, 0.3);
+            border: 1px dotted rgba(255, 3, 0, 0.91);
+            box-shadow: inset 0 0 2px, 0 0 2px;
+            transform: translateZ(60px);
+        }
+        .side-1{
+            transform: translateZ(-140px) rotateY(180deg);
+        }
+        .side-2{
+            transform: translateX(-140px) rotateY(-90deg) ;
+        }
+        .side-3{
+            transform: translateX(140px) rotateY(90deg);
+        }
+        .side-4{
+            transform: translateY(140px) rotateY(90deg) rotateX(-90deg);
+        }
+        .side-5{
+            transform: translateY(-140px) rotateY(-90deg) rotateX(90deg);
+        }
+        .side-6{
+            transform: translateZ(140px);
+        }
+    </style>
+    <script> alert(77777)</script>
+</head>
+<body>
+<div class="center">
+    <div class="demo demo--1">
+        <div class="side side-1">
+            <div class="inner"></div>
+        </div>
+        <div class="side side-2">
+            <div class="inner"></div>
+        </div>
+        <div class="side side-3">
+            <div class="inner"></div>
+        </div>
+        <div class="side side-4">
+            <div class="inner"></div>
+        </div>
+        <div class="side side-5">
+            <div class="inner"></div>
+        </div>
+        <div class="side side-6">
+            <div class="inner"></div>
+        </div>
+    </div>
+    <div class="demo demo--2">
+        <div class="side side-1">
+            <div class="inner"></div>
+        </div>
+        <div class="side side-2">
+            <div class="inner"></div>
+        </div>
+        <div class="side side-3">
+            <div class="inner"></div>
+        </div>
+        <div class="side side-4">
+            <div class="inner"></div>
+        </div>
+        <div class="side side-5">
+            <div class="inner"></div>
+        </div>
+        <div class="side side-6">
+            <div class="inner"></div>
+        </div>
+    </div>
+    <div class="demo demo--3">
+        <div class="side side-1">
+            <div class="inner"></div>
+        </div>
+        <div class="side side-2">
+            <div class="inner"></div>
+        </div>
+        <div class="side side-3">
+            <div class="inner"></div>
+        </div>
+        <div class="side side-4">
+            <div class="inner"></div>
+        </div>
+        <div class="side side-5">
+            <div class="inner"></div>
+        </div>
+        <div class="side side-6">
+            <div class="inner"></div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

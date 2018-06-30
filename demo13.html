@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .container{
+            margin: 0 auto;
+            width: 1200px;
+            height: 600px;
+
+        }
+        .button-list{
+            width: 100%;
+            height: 50px;
+            display: flex;
+        }
+        .button{
+            width: 15%;
+            height: 100%;
+            margin: 0 2.5%;
+            border-radius: 50%;
+            background: #8A6D3C;
+            font-size: 24px;
+            line-height: 50px;
+            text-align: center;
+        }
+        .banner-list{
+            width: 100%;
+            height: 550px;
+            background: #1c1011;
+            position: relative;
+            overflow: hidden;
+        }
+        .banner{
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            font-size: 50px;
+            text-align: center;
+            line-height: 200px;
+            left: 0;
+            top: 0;
+        }
+        .banner:nth-child(1){
+            background: #ff00cb;
+        }
+        .banner:nth-child(2){
+            background: #13ff13;
+        }
+        .banner:nth-child(3){
+            background: #1afffc;
+        }
+        .banner:nth-child(4){
+            background: #ff2e33;
+        }
+        .banner:nth-child(5){
+            background: #ffed24;
+        }
+        .banner-list .activenow{
+            animation: now 3s linear forwards;
+        }
+        .banner-list .activenext{
+
+            animation: next 3s linear forwards;
+        }
+        .banner-list .rightnow{
+
+            animation: rightnow 3s linear forwards;
+        }
+        .banner-list .rightnext{
+
+            animation: rightnext 3s linear forwards;
+        }
+        @keyframes now {
+            0%{
+                left:0;
+            }
+            100%{
+                left: -1200px;
+            }
+        }
+
+        @keyframes next {
+            0%{
+                left: 1200px;
+            }
+            100%{
+                left:0;
+            }
+        }
+
+        @keyframes rightnow {
+            0%{
+                left:0;
+            }
+            100%{
+                left:1200px;
+            }
+        }
+
+        @keyframes rightnext {
+            0%{
+                left: -1200px;
+            }
+            100%{
+                left:0;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="button-list">
+    <div class="button">A</div>
+    <div class="button">B</div>
+    <div class="button">C</div>
+    <div class="button">D</div>
+    <div class="button">E</div>
+    </div>
+<div class="banner-list">
+    <div class="banner">拉斯蒂我金娃杀了你电击文库2</div>
+    <div class="banner">哦蚊王武器除沫器哦我</div>
+    <div class="banner">弄啊UR换成你清楚你请与我33</div>
+    <div class="banner">D蜗牛耦合无人vuhaiucq1</div>
+    <div class="banner">哦IMSEOhiuasdcunqoinvqo1</div>
+</div>
+</div>
+<script>
+    let button=document.querySelectorAll(".button");
+    let banner=document.querySelectorAll(".banner");
+    let container=document.querySelector(".banner-list");
+    let z=20;
+    let n=0;
+    let flag=true;
+    for (let m=0;m<button.length;m++){
+        button[m].onclick=function () {
+            if (flag === false) {
+                return 0;
+            } else {
+                flag=!flag;
+                if (m > n) {
+                    banner[n].classList.add("activenow");
+                    banner[m].classList.add("activenext");
+                } else if (m < n) {
+                    banner[n].classList.add("rightnow");
+                    banner[m].classList.add("rightnext");
+                }
+                banner[m].style.zIndex = z++;
+                n = m;
+                banner[m].addEventListener("animationend", function () {
+                    for (let i = 0; i < banner.length; i++) {
+                        banner[i].classList.remove("activenext");
+                        banner[i].classList.remove("activenow");
+                        banner[i].classList.remove("rightnow");
+                        banner[i].classList.remove("rightnext");
+                        flag = true;
+                    }
+                });
+                m = next;
+            }
+        }
+    }
+    let t;
+    let e=0;
+    let next=0;
+    t=setInterval(move,3000);
+    function move() {
+        for (let i=0;i<banner.length;i++) {
+            banner[i].classList.remove("activenext");
+            banner[i].classList.remove("activenow");
+        }
+            if (next===banner.length){
+                next=0;
+            }
+        banner[e].classList.add("activenow");
+        banner[next].classList.add("activenext");
+        banner[next].style.zIndex=z++;
+        e=next;
+        next++;
+
+    }
+    container.onmouseenter=function () {
+        clearInterval(t);
+    };
+    container.onmouseleave=function () {
+        t=setInterval(move,3000);
+    }
+</script>
+</body>
+</html>

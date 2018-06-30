@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script>
+        let arr = [1, 5, 2, 3, 5, 7, 8, 0, 5, 4, 5, 8, 0, 5, 3, 5, 7, 9, 0, 6, 4, 3, 3, 6, 9, 0];
+        let newArr = [];
+        let n = 0;
+        for (let i = 0; i <= arr.length; i++) {
+            if (check(newArr, arr[i])) {
+                newArr[n] = arr[i];
+                n++;
+            }
+        }
+
+        function check(arr, val) {
+            for (let i = 0; i <= arr.length; i++) {
+                if (arr[i] === val) {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        console.log(newArr);
+        for (let i = 0; i <= newArr.length; i++) {
+            for (let j = i; j <= newArr.length; j++) {
+                if (newArr[i] <= newArr[j]) {
+                    temp = newArr[i];
+                    newArr[i] = newArr[j];
+                    newArr[j] = temp;
+                }
+            }
+        }
+        console.log(newArr);
+        let arr2 = [
+            [13, 35, 65, 79, 34],
+            [37, 38, 9, 46, 68]
+        ];
+        let result = false;
+        for (let i = 0; i < arr2.length; i++) {
+            for (let j = 0; j < arr2[i].length; j++) {
+                console.log(arr2[i][j]);
+                if (arr2[i][j] === 68) {
+                    result = true;
+                }
+            }
+        }
+        console.log(result);
+
+        function obj(_name, _age, _sex) {
+            this.name = _name;
+            this.age = _age;
+            this.sex = _sex;
+            this.breath = true;
+        }
+
+        let obj1 = new obj("zhangsan", 16, 'nan');
+        console.log(obj1);
+        obj1.grade = (99);
+        console.log(obj1);
+        let obj2 = new obj('lisi', 18, 'nv');
+        console.log(obj2);
+        delete obj2.age;
+        console.log(obj2);
+        let obj3 = new obj("刘利泽！！！", 21, "nan");
+        obj3.grade = [99];
+        document.write(obj3[prompt("输入你想要的信息:")]);
+    </script>
+    <title>Document</title>
+</head>
+<body>
+
+</body>
+</html>

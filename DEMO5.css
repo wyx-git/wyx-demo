@@ -1,0 +1,124 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.began-list{
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+    perspective: 100px;
+    transform-style: preserve-3d;
+    animation: rotate 10s linear forwards;
+    background: rgba(38, 38, 38, 0.89);
+}
+@keyframes rotate {
+    90%{
+        opacity: 0.9;
+    }
+    100% {
+        opacity: 0;
+        z-index: -1000;
+    }
+}
+.began{
+    width: 20%;
+    height: 200vh;
+    position: absolute;
+}
+.began.center{
+    z-index: 200;
+    top: 400px;
+    left: 700px;
+    width: 200px;
+    height: 200px;
+    border-radius: 100px;
+    border: 5px solid #fff;
+    background: #342526;
+    animation: rotate-center 10s linear;
+    font-size: 40px;
+    text-align: center;
+    line-height: 200px;
+}
+@keyframes rotate-center {
+    10% {
+        width: 300px;
+        height: 300px;
+        border-radius: 150px;
+        transform: rotateZ(360deg);
+    }
+    20% {
+        width: 200px;
+        height: 200px;
+        border-radius: 100px;
+    }
+    95%{
+        width: 50px;
+        height: 50px;
+        border-radius: 25px;
+        font-size: 20px;
+        line-height: 40px;
+        opacity: 0;
+        transform: translateX(600px);
+    }
+}
+.began.demo1{
+    top: 0;
+    left: 0;
+    transform: rotateZ(45deg) translateX(-700px) translateY(-150px);
+    background-image: radial-gradient( rgba(8, 0, 122, 0.95) 15px, transparent 1px);
+    background-size: 40px 40px, 40px 40px, 35px 35px, 35px 35px;
+    animation: rotate-left 14s linear;
+}
+.began.demo2{
+    top: 0;
+    left: 20%;
+    transform: rotateZ(45deg) translateX(-600px) translateY(-290px);
+    background-image: radial-gradient( rgba(118, 0, 102, 0.95) 15px, transparent 1px);
+    background-size: 40px 40px, 40px 40px, 35px 35px, 35px 35px;
+    animation: rotate-right 14s linear;
+}
+.began.demo3{
+    top: 0;
+    left: 40%;
+    transform: rotateZ(45deg) translateX(-500px) translateY(-240px);
+    background-image: radial-gradient( rgba(162, 137, 0, 0.95) 15px, transparent 1px);
+    background-size: 40px 40px, 40px 40px, 35px 35px, 35px 35px;
+    animation: rotate-left 14s linear;
+}
+.began.demo4{
+    top: 0;
+    left: 60%;
+    transform: rotateZ(45deg) translateX(-400px) translateY(-230px);
+    background-image: radial-gradient( rgba(101, 101, 101, 0.95) 15px, transparent 1px);
+    background-size: 40px 40px, 40px 40px, 35px 35px, 35px 35px;
+    animation: rotate-right 14s linear;
+}
+.began.demo5{
+    top: 0;
+    right: 0;
+    transform: rotateZ(45deg) translateX(-300px) translateY(-255px);
+    background-image: radial-gradient( rgba(27, 139, 14, 0.95) 15px, transparent 1px);
+    background-size: 40px 40px, 40px 40px, 35px 35px, 35px 35px;
+    animation: rotate-left 14s linear;
+}
+.began.demo6{
+    top: 0;
+    right: 0;
+    transform: rotateZ(45deg) translateX(90px) translateY(-255px);
+    background-image: radial-gradient( rgba(8, 0, 133, 0.95) 15px, transparent 1px);
+    background-size: 40px 40px, 40px 40px, 35px 35px, 35px 35px;
+    animation: rotate-right 14s linear;
+}
+
+@keyframes rotate-left {
+    100% {
+        transform: translateY(500vh) translateX(-500vh);
+    }
+}
+@keyframes rotate-right {
+    100% {
+        transform: translateY(-500vh) translateX(500vh);
+}
+}

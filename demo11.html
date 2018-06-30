@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .banner{
+            width: 200px;
+            height: 500px;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+            background: #9e7a0c;
+            transition: all 3s;
+        }
+        .point{
+            float: left;
+            width: 100px;
+            height: 50px;
+            border-radius: 25px;
+            background: #9e7a0c;
+        }
+        .img{
+            float: left;
+            width: 100px;
+            height: 100px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+        <div class="banner"></div>
+        <div class="point">point</div>
+        <div class="point">point</div>
+        <div class="point">point</div>
+        <div class="point">point</div>
+        <div class="point">point</div>
+        <div class="img"></div>
+        <div class="img"></div>
+        <div class="img"></div>
+        <div class="img"></div>
+        <div class="img"></div>
+        <script>
+            let banner=document.querySelector(".banner");
+            let state =true;
+            banner.onclick=function () {
+                if (state ===true){
+                    banner.style.transform="rotateY(180deg)";
+                    banner.style.background="#344";
+                }else{
+                    banner.style.transform="rotateY(0deg)";
+                    banner.style.background="";
+                }
+                state=!state;
+            };
+            let points=document.querySelectorAll(".point");
+            let imgs=document.querySelectorAll(".img");
+            for (let i=0;i<=points.length;i++) {
+                points[i].onclick=function () {
+                    index=i;
+                    imgs[index].style.background="#445";
+                    };
+                }
+        </script>
+</body>
+</html>

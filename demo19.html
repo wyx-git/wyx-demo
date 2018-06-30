@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body{
+            overflow: hidden;
+        }
+        .demo{
+            position: absolute;
+            margin: auto;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+        }
+        .point{
+            transform-style: preserve-3d;
+            animation:boom 1s forwards linear;
+        }
+        @keyframes boom {
+            50%{
+                width: 300px;
+                height: 300px;
+            }
+            80%{
+                opacity: 1;
+            }
+            100%{
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="demo"></div>
+<script>
+    let data=["","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",
+        "","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""];
+    let newPoint=[];
+    let rLeft;
+    let rTop;
+    data.forEach(function (text) {
+        let newDiv=document.createElement("div");
+        do{
+             rLeft=Math.floor(Math.random()*(window.innerWidth-100));
+             rTop=Math.floor(Math.random()*(window.innerHeight-100));
+        }
+        while(checkpoint(rLeft,rTop));
+        let r=Math.floor(Math.random()*150)+50;
+        // let g=Math.floor(Math.random()*156)+100;
+        // let b=Math.floor(Math.random()*156)+100;
+        newDiv.style.cssText=`width:${r}px;height:${r}px;background:url("bbb.png") no-repeat center/100%;
+        border-radius:15px;color:#fff;text-align:center;line-height:30px;left:${rLeft}px;top:${rTop}px;position:absolute;`;
+    newDiv.innerText=text;
+        newDiv.onclick=function(){
+            newDiv.classList.add("point");
+        };
+        document.body.appendChild(newDiv);
+        newPoint.push({l:rLeft,t:rTop,e:newDiv});
+    });
+    function checkpoint(l,t) {
+        for (let i=0;i<newPoint.length;i++) {
+            if (l<newPoint[i].l+50&&l>newPoint[i].l-50&&t<newPoint[i].t+30&&t>newPoint[i].t-30){
+                return true;
+            }
+        }
+        return false;
+    }
+        const maxleft=window.innerHeight-50;
+                for (let i=0;i<newPoint.length;i++) {
+                    let nleft = newPoint[i].t;
+                    let speed = 5;
+                    setInterval(function () {
+                    if (nleft > maxleft ) {
+                        nleft=-30;
+                        newPoint[i].e.style.opacity=1;
+                    }
+                    nleft += speed;
+                    newPoint[i].e.style.top = nleft + "px";
+                    }, 20)
+                }
+</script>
+</body>
+</html>

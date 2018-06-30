@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>点击产生随机数</title>
+    <script language="javascript">
+        window.onload = function(){
+            var arr = ['135****8827','137****1621','135****5498' ];
+//var index = Math.floor((Math.random()*arr.length));
+            var list = []; var oBtn = document.getElementById('btn'); oBtn.onclick = function(){
+//一开始把下面的这行代码放在了onclick的外面产生的数字都一样
+                var index = Math.floor((Math.random()*arr.length));
+//将数据压入数组中，
+                var count =list.push(arr[index]);
+//控制台中显示
+                console.log(list);
+            };
+        }
+    </script>
+<body>
+<button id="btn">点我</button>
+</body>
+</html>
